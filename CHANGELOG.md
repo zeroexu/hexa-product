@@ -7,9 +7,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* 🧨 None
-* 🧨 none
-
 ### Features
 
 * 🎸 add Release command ([6e20085](https://github.com/zeroexu/hexa-product/commit/6e200853addb1a8609a4dc8952c28900f38fa380))
