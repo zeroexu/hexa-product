@@ -1,19 +1,23 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "outDir": "./dist",
-        "declaration": true,
-        "declarationDir": "./dist/types"
+        "target": "es5", // Versión de ECMAScript a la que compilar
+        "module": "commonjs", // Sistema de módulos a utilizar (puede ser es6, commonjs, etc.)
+        "strict": true, // Habilita todas las opciones de comprobación estricta de TypeScript
+        "esModuleInterop": true, // Simplifica la interoperabilidad entre los sistemas de módulos CommonJS y ES6
+        "skipLibCheck": true, // Evita la comprobación de librerías de definición de tipos (puedes ajustarlo según tus necesidades)
+        "forceConsistentCasingInFileNames": true, // Garantiza la consistencia en el casing de los nombres de archivos
+        "outDir": "./dist", // Directorio de salida para los archivos compilados
+        "rootDir": "./src", // Directorio de entrada para los archivos fuente
+        "declaration": true, // Genera archivos .d.ts para tu código TypeScript
+        "declarationMap": true, // Genera archivos de mapa de declaración (.d.ts.map)
+        "sourceMap": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "package.json",
+        "CHANGELOG.md"
     ],
     "exclude": [
         "node_modules"
-    ]
+    ],
 }
