@@ -1,12 +1,15 @@
 {
   "name": "hexa-product",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version",
-    "build": "tsc"
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "cp ./package.json dist/"
   },
   "keywords": [],
   "author": "",

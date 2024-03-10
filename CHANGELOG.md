@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/zeroexu/hexa-product/compare/v2.0.0...v2.3.0) (2024-03-10)
+
+
+### Features
+
+* 🎸 add base configuration ([17d9113](https://github.com/zeroexu/hexa-product/commit/17d9113a9d065950b23a8a1167bba76571e2be8f))
+
+## [2.2.0](https://github.com/zeroexu/hexa-product/compare/v2.0.0...v2.2.0) (2024-03-09)
+
+
+### Features
+
+* 🎸 add base configuration ([17d9113](https://github.com/zeroexu/hexa-product/commit/17d9113a9d065950b23a8a1167bba76571e2be8f))
+
 ## [2.1.0](https://github.com/zeroexu/hexa-product/compare/v2.0.0...v2.1.0) (2024-03-08)
 
 
