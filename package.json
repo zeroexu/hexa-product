@@ -1,6 +1,6 @@
 {
   "name": "hexa-product",
-  "version": "2.3.5",
+  "version": "2.3.12",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

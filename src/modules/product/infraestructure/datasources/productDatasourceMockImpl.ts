@@ -1,7 +1,8 @@
 import { Environment } from "../../../../config/environment";
 import { PromiseWrapper } from "../../../../config/helpers/promiseHelper/promiseWrapper";
 import { ResponseData } from "../../../../config/helpers/promiseHelper/type";
-import { Request } from "../../../../config/helpers/request";
+import { Request } from "../../../../config/helpers/request/index";
+
 import { ProductDatasource } from "../../domain/datasources/productDatasource";
 import Product from "../../domain/entities/product";
 import { ProductMapper } from "../mappers/productMapper";

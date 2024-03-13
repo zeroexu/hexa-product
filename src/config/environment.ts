@@ -1,13 +1,13 @@
-export interface IEnvironment {
+export interface ISettings {
     SearchProductURL: string;
     DetailProductURL: string;
 }
 
-export class Environment implements IEnvironment {
+export class Environment implements ISettings {
     SearchProductURL: string;
     DetailProductURL: string;
 
-    constructor(config: IEnvironment) {
+    constructor(config: ISettings) {
         this.SearchProductURL = config.SearchProductURL;
         this.DetailProductURL = config.DetailProductURL;
     }

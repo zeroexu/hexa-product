@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es5", // Versión de ECMAScript a la que compilar
-        "module": "commonjs", // Sistema de módulos a utilizar (puede ser es6, commonjs, etc.)
+        "target": "es6",
+        "module": "es6", // Cambiado de "commonjs" a "es6"
         "strict": true, // Habilita todas las opciones de comprobación estricta de TypeScript
         "esModuleInterop": true, // Simplifica la interoperabilidad entre los sistemas de módulos CommonJS y ES6
         "skipLibCheck": true, // Evita la comprobación de librerías de definición de tipos (puedes ajustarlo según tus necesidades)
