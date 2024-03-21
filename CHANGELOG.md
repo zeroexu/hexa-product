@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.15](https://github.com/zeroexu/hexa-product/compare/v2.3.5...v2.3.15) (2024-03-21)
+
+### [2.3.14](https://github.com/zeroexu/hexa-product/compare/v2.3.5...v2.3.14) (2024-03-21)
+
+### [2.3.13](https://github.com/zeroexu/hexa-product/compare/v2.3.5...v2.3.13) (2024-03-21)
+
 ### [2.3.12](https://github.com/zeroexu/hexa-product/compare/v2.3.5...v2.3.12) (2024-03-13)
 
 ### [2.3.11](https://github.com/zeroexu/hexa-product/compare/v2.3.5...v2.3.11) (2024-03-13)

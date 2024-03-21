@@ -10,7 +10,14 @@
         "rootDir": "./src", // Directorio de entrada para los archivos fuente
         "declaration": true, // Genera archivos .d.ts para tu código TypeScript
         "declarationMap": true, // Genera archivos de mapa de declaración (.d.ts.map)
-        "sourceMap": true
+        "sourceMap": true,
+        "baseUrl": ".", // Esto puede variar dependiendo de tu estructura de proyecto
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ] // Esto puede variar dependiendo de tu estructura de proyecto
+        }
     },
     "include": [
         "src/**/*.ts",
