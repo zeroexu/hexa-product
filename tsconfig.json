@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "es6",
         "module": "es6", // Cambiado de "commonjs" a "es6"
+        "moduleResolution": "bundler",
         "strict": true, // Habilita todas las opciones de comprobación estricta de TypeScript
         "esModuleInterop": true, // Simplifica la interoperabilidad entre los sistemas de módulos CommonJS y ES6
         "skipLibCheck": true, // Evita la comprobación de librerías de definición de tipos (puedes ajustarlo según tus necesidades)
@@ -16,6 +17,9 @@
             "*": [
                 "node_modules/*",
                 "src/types/*"
+            ],
+            "zustand/*": [
+                "node_modules/zustand/*"
             ] // Esto puede variar dependiendo de tu estructura de proyecto
         }
     },

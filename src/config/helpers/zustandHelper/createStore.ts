@@ -1,52 +1,42 @@
-import { create } from "zustand/index";
+import { StoreApi, create, } from "zustand";
 
+// Función para crear el store con control de isWorking
+const createStore = <TState extends Record<string, any>>(
+    createStateCallback: (set: StoreApi<TState>['setState'], get: StoreApi<TState>['getState']) => TState
+) => {
+    return create<TState>((set, get) => {
+        // Creamos el estado inicial utilizando la función de callback
+        const initialState = createStateCallback(set, get);
 
-const createStore = <TState extends Record<string, any>>(originalState: TState) => {
-    // Tipo para las keys de los métodos con valores booleanos
-    type MethodKeys = Record<keyof TState, boolean>;
-
-    // Inicializamos el control de isWorking para cada método
-    const initialIsWorking: MethodKeys = Object.keys(originalState).reduce((acc, key) => {
-        if (typeof originalState[key] === 'function') {
-            acc[key as keyof TState] = false;
-        }
-        return acc;
-    }, {} as MethodKeys);
-
-    type CustomState = TState & { isWorking: MethodKeys }
-
-    return create<CustomState>((set, get) => {
-        // Asignamos el estado original y el control de isWorking
-        const newState: CustomState = {
-            ...originalState,
-            isWorking: initialIsWorking,
-        };
-
-        // Iteramos sobre las keys del estado original para agregar el control de isWorking
-        for (const key in originalState) {
-            if (typeof originalState[key] === 'function') {
+        // Inicializamos el control de isWorking para cada método
+        const initialIsWorking = Object.keys(initialState).reduce((acc, key) => {
+            if (typeof initialState[key] === 'function') {
                 // @ts-ignore
-                newState[key as keyof TState] = (...args: any[]) => {
-                    if (get().isWorking[key as keyof TState]) {
-                        return; // Evitar la ejecución si el método ya está en curso
-                    }
+                acc[key as keyof TState] = false;
+            }
+            return acc;
+        }, {} as Record<string, boolean>);
 
-                    set((state) => ({
-                        ...state,
-                        isWorking: { ...state.isWorking, [key]: true },
-                    }));
+        // Combinamos el estado inicial con el control de isWorking
+        const stateWithControl = { ...initialState, isWorking: initialIsWorking } as TState & { isWorking: Record<string, boolean> };
 
-                    originalState[key as keyof TState](...args); // Ejecutar el método original
+        // Creamos un objeto que contenga los métodos con control de isWorking
 
-                    set((state) => ({
-                        ...state,
-                        isWorking: { ...state.isWorking, [key]: false },
-                    }));
+        const methodsWithControl = Object.keys(stateWithControl).reduce((acc, key) => {
+
+            if (typeof stateWithControl[key] === 'function') {
+
+                acc[key] = async (...args: any[]) => {
+                    if (get().isWorking[key]) return; // Evitar la ejecución si el método ya está en curso
+                    set((state) => ({ ...state, isWorking: { ...state.isWorking, [key]: true } }));
+                    await stateWithControl[key](...args); // Ejecutar el método original
+                    set((state) => ({ ...state, isWorking: { ...state.isWorking, [key]: false } }));
                 };
             }
-        }
+            return acc;
+        }, {} as Record<string, () => void | Promise<void>>);
 
-        return newState;
+        return { ...stateWithControl, ...methodsWithControl };
     });
 };
 

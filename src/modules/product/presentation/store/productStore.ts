@@ -1,25 +1,24 @@
-import createStore from "src/config/helpers/zustandHelper/createStore";
+import createStore from "../../../../config/helpers/zustandHelper/createStore";
 import Product from "../../domain/entities/product";
+import { ProductRepositoryImpl } from "../../infraestructure/repositories/productRepositoryImpl";
 
 // Definimos las interfaces para el estado y los métodos
 export interface ProductStateProps {
     products: Product[];
-    getProducts: () => void;
-    getProductDetail: () => void;
+    getProducts: (searchParam: string) => Promise<void>;
+    getProductDetail: () => Promise<void>;
 }
 
 // Crear el store de productos con el middleware
-const useProductStore = createStore<ProductStateProps>({
+const useProductStore = (productRepository: ProductRepositoryImpl) => createStore<ProductStateProps>((set, get) => ({
     products: [],
-    getProducts: () => {
-        // Lógica para obtener productos
+    getProducts: async (searchParam: string) => {
+        const { response, isError } = await productRepository.getSearchProduct(searchParam);
+        set(state => ({ ...state, products: response, isError }));
     },
-    getProductDetail: () => {
+    getProductDetail: async () => {
         // Lógica para obtener detalles de un producto
     },
-});
+}));
 
 export default useProductStore
-
-// Ejemplo de uso
-//useProductStore.getState().getProducts(); // Ejecutar método getProducts con control de isWorking
